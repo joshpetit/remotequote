@@ -1,8 +1,8 @@
-package api;
+package com.github.joshpetit.remotequote.api;
 
 import com.datastax.oss.driver.api.core.CqlSession;
 import com.datastax.oss.driver.api.core.cql.ResultSet;
-import model.Quote;
+import com.github.joshpetit.remotequote.model.Quote;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,10 +14,12 @@ public class Historian {
     private String dbUser;
     private String dbPass;
     private CqlSession session;
+    private String username;
 
     public Historian(String username) {
         Properties creds = new Properties();
         try {
+            this.username = username;
             creds.load(Historian.class.getResourceAsStream("cred.conf"));
             dbUser = creds.getProperty("username");
             dbPass = creds.getProperty("password");
@@ -27,18 +29,13 @@ public class Historian {
             .withKeyspace("quotes")
             .build();
         } catch (IOException e) {
-            System.err.println("Unable to load credidentials");
+            System.err.println("Unable to connect to database");
             System.exit(1);
         }
     }
 
-    public static void main(String[] args) {
-        Historian h = new Historian("Person");
-        System.out.println(h.getAllQuotes());
-    }
 
-
-    public List<Quote> getAllQuotes() {
+    public List<Quote> getAllUserQuotes() {
         List<Quote> quotes = new ArrayList<>();
         ResultSet rs = session.execute("select * from user_quotes");
         rs.forEach(row -> quotes.add(new Quote(row.getString("quote"), row.getString("author"))));

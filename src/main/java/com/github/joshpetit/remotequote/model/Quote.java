@@ -1,4 +1,4 @@
-package model;
+package com.github.joshpetit.remotequote.model;
 
 public class Quote {
     private String quote;

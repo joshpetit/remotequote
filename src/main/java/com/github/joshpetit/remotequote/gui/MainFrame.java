@@ -1,4 +1,4 @@
-package gui;
+package com.github.joshpetit.remotequote.gui;
 
 import javax.swing.*;
 

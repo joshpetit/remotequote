@@ -1,4 +1,4 @@
-package api;
+package com.github.joshpetit.remotequote.api;
 
 
 import org.junit.jupiter.api.Assertions;
@@ -15,7 +15,7 @@ class HistorianTest {
 
     @Test
     void getAllQuotes() {
-        Assertions.assertNotEquals(0, historian.getAllQuotes());
+        Assertions.assertNotEquals(0, historian.getAllUserQuotes());
     }
 
     @Test

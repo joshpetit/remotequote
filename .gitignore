@@ -1,4 +1,4 @@
 .idea
-src/main/resources/api/cred.conf
+src/main/resources/com/github/joshpetit/remotequote/com.github.joshpetit.remotequote.api/cred.conf
 remotequote.iml
 target/
