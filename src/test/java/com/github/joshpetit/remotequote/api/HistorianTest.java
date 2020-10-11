@@ -20,5 +20,9 @@ class HistorianTest {
 
     @Test
     void addQuote() {
+        int before = Historian.getAllUserQuotes().size();
+        Historian.addQuote("test_quote_add", "test_quote_add_author", "test_quote_add_type");
+        int after = Historian.getAllUserQuotes().size();
+        assert(before < after);
     }
 }
