@@ -17,7 +17,7 @@ public class Historian {
     Historian() {
     }
 
-    public static void initializeHistorian(String username) {
+    public static void initialize(String username) {
         Properties creds = new Properties();
         try {
             Historian.username = username;
