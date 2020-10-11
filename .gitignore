@@ -1,0 +1,4 @@
+.idea
+src/main/resources/api/cred.conf
+remotequote.iml
+target/
