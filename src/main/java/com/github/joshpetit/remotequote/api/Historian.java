@@ -14,6 +14,9 @@ public class Historian {
     private static CqlSession session;
     private static String username;
 
+    Historian() {
+    }
+
     public static void initializeHistorian(String username) {
         Properties creds = new Properties();
         try {
