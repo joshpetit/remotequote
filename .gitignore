@@ -2,3 +2,4 @@
 src/main/resources/com/github/joshpetit/remotequote/com.github.joshpetit.remotequote.api/cred.conf
 remotequote.iml
 target/
+src/main/resources/com/github/joshpetit/remotequote/api/secure-connect-central.zip
