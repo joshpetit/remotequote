@@ -43,4 +43,10 @@ public class Historian {
                 row.getString("author"), row.getUuid("quote_id"), row.getString("username"))));
         return quotes;
     }
+
+    public static void addQuote(String quote, String author, String quoteType) {
+        String query = String.format("INSERT INTO user_quotes (quote_id, username, quote, author, quote_type) VALUES" +
+                "(now(), %s, %s, %s, %s)", username, quote, author, quoteType);
+        session.execute(query);
+    }
 }
