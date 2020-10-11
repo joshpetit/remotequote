@@ -11,18 +11,16 @@ import java.util.Properties;
 
 public class Historian {
 
-    private String dbUser;
-    private String dbPass;
-    private CqlSession session;
-    private String username;
+    private static CqlSession session;
+    private static String username;
 
-    public Historian(String username) {
+    public static void initializeHistorian(String username) {
         Properties creds = new Properties();
         try {
-            this.username = username;
+            Historian.username = username;
             creds.load(Historian.class.getResourceAsStream("cred.conf"));
-            dbUser = creds.getProperty("username");
-            dbPass = creds.getProperty("password");
+            String dbUser = creds.getProperty("username");
+            String dbPass = creds.getProperty("password");
             session = CqlSession.builder()
                     .withCloudSecureConnectBundle(Historian.class.getResource("secure-connect-central.zip"))
                     .withAuthCredentials(dbUser, dbPass)
@@ -34,7 +32,7 @@ public class Historian {
         }
     }
 
-    public List<Quote> getAllUserQuotes() {
+    public static List<Quote> getAllUserQuotes() {
         List<Quote> quotes = new ArrayList<>();
         String query = String.format("select * from user_quotes where username='%s'", username);
         ResultSet rs = session.execute(query);
