@@ -15,12 +15,14 @@ class HistorianTest {
     @Test
     void getAllQuotes() {
         Quote q = Historian.getAllUserQuotes().get(0);
+        System.out.println(q);
         assert (q != null);
     }
 
     @Test
     void addQuote() {
         int before = Historian.getAllUserQuotes().size();
+//        Historian.addQuote("test_quote_add", "test_quote_add_author", "test_quote_add_type");
         Historian.addQuote("test_quote_add", "test_quote_add_author", "test_quote_add_type");
         int after = Historian.getAllUserQuotes().size();
         assert(before < after);
